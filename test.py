@@ -9,3 +9,6 @@ def all_data(data1, data2):
 
 
 all_data(int(list_data[0]), list_data[1])
+
+x = lambda a: a + int(list_data[0])
+print(x(5))

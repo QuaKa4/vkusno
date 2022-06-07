@@ -8,4 +8,4 @@ def is_prime(number):
         return "число больше 1000 или меньше 1"
 
 
-print(is_prime(4))
+print(is_prime(6))

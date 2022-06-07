@@ -1,14 +1,11 @@
 def is_prime(number):
-    if number < 1001:
-        if int(number):
-            print('число простое')
-            return True
-
+    if number <= 1000 and number >= 1:
+        if number % 2 == 0:
+            return 'число простое'
         else:
-            return False
-
+            return "число составное"
     else:
-        print('число больше 1000')
+        return "число больше 1000 или меньше 1"
 
 
-is_prime(3.4)
+print(is_prime(4))

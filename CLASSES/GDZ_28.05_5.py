@@ -10,7 +10,7 @@ class TrueString:
         self.sum1 = 0
         self.sum2 = 0
         if isinstance(self.word1, list) or isinstance((self.word2), list or set or tuple or int or bool):
-            print('водть можно только строковые значения')
+            print('вводить можно только строковые значения')
         else:
             list1 = list(self.word1)
             list2 = list(self.word2)

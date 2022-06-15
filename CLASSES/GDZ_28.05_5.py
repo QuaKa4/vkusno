@@ -1,15 +1,14 @@
 class TrueString:
-    def __init__(self, word1, word2, sum1, sum2):
+    def __init__(self, word1, word2):
         self.word1 = word1
         self.word2 = word2
-        self.sum1 = sum1
-        self.sum2 = sum2
+        self.sum1 = 0
+        self.sum2 = 0
 
     @property
     def razdel(self):
-        self.sum1 = 0
-        self.sum2 = 0
-        if isinstance(self.word1, list) or isinstance((self.word2), list or set or tuple or int or bool):
+        _sum = 0
+        if not isinstance(self.word1, str) and isinstance(self.word2, str):
             print('вводить можно только строковые значения')
         else:
             list1 = list(self.word1)
@@ -32,11 +31,9 @@ class TrueString:
                 return 'вторая строка имеет значение больше'
             elif self.word2 == self.word1:
                 return 'значения равны'
-        else:
-            return 'произошла ошибика'
 
 
-oj1 = 'kdfskjf'
-oj2 = 'dsfsдлавввввввввво.'
-print(TrueString(oj1, oj2, 0, 0).razdel)
-print(TrueString(oj1, oj2, 0, 0).sravnenie)
+oj1 = 'dsfsдлавввввввввво'
+oj2 = 'dsfsдлавввввввввво'
+print(TrueString(oj1, oj2).razdel)
+print(TrueString(oj1, oj2).sravnenie)

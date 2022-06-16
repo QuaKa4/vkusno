@@ -1,0 +1,2 @@
+oj = input()
+oj.map

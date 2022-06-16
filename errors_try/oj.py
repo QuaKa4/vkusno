@@ -67,15 +67,20 @@ class Cls():
         nnn.delete(first=0, last=9999)
 
 
+global Entry
+
+nnn = Entry(width=20)
+nnn.grid(column=4, row=1)
+
+nnn_get = nnn.get()
+
+allowed_characters = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '+', '-', '*', '/']
+
 nnn_zametki = Entry()
 nnn_zametki.grid(column=4, row=3)
 
 lbl = Label(text='заметки')
 lbl.grid(column=4, row=2)
-
-nnn = Entry(width=20)
-nnn.pack()
-nnn.grid(column=4, row=1)
 
 button_1 = Button(window, text="1", command=Cls.cl_1)
 button_1.grid(column=0, row=1)

@@ -1,3 +1,7 @@
+from wsgiref import headers
+
+import requests
+
 from api.api_base import ApiBase
 
 
@@ -22,5 +26,6 @@ class LoginApi(ApiBase):
             "email": wrong_email,
             "password": wrong_password
         }
+        token = requests.get(url, headers=headers).json()
         r = self.post(url, params)
-        return r.json()
+        return r.json(), token

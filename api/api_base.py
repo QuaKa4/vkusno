@@ -10,6 +10,15 @@ class ApiBase:
         if response.status_code not in self.DEFAULT_STATUS_CODE:
             raise HTTPError(f'{response.status_code} not in {self.DEFAULT_STATUS_CODE}')
 
+    def session(self, url):
+        headers = {
+            "accept": "application/json",
+            "Content-Type": "application/json"
+        }
+        token = requests.get(url, headers=headers).json()['token']
+        p = requests.Session
+        return p
+
     def request(self, method, url, **kwargs):
         try:
             response = requests.request(method, url, **kwargs)

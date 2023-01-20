@@ -1,5 +1,4 @@
-import requests
-from requests import Response, HTTPError
+from requests import Response, HTTPError, Session
 
 
 class ApiBase:
@@ -10,18 +9,12 @@ class ApiBase:
         if response.status_code not in self.DEFAULT_STATUS_CODE:
             raise HTTPError(f'{response.status_code} not in {self.DEFAULT_STATUS_CODE}')
 
-    def session(self, url):
-        headers = {
-            "accept": "application/json",
-            "Content-Type": "application/json"
-        }
-        token = requests.get(url, headers=headers).json()['token']
-        p = requests.Session
-        return p
+    def __init__(self, session: Session = None):
+        self.session = session or Session()
 
     def request(self, method, url, **kwargs):
         try:
-            response = requests.request(method, url, **kwargs)
+            response = self.session.request(method, url, **kwargs)
         except ConnectionError as e:
             raise ConnectionError(f'{method} request to {url}, throws exception {e}') from e
         self.handle_status(response)
@@ -30,8 +23,8 @@ class ApiBase:
     def get(self, url, **kwargs):
         return self.request('GET', url, **kwargs)
 
-    def post(self, url, params, **kwargs):
-        return self.request('POST', url, data=params, **kwargs)
+    def post(self, url, data, **kwargs):
+        return self.request('POST', url, data=data, **kwargs)
 
     def patch(self, url, params, **kwargs):
         return self.request('PATCH', url, params=params, **kwargs)

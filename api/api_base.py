@@ -4,7 +4,6 @@ from requests import Response, HTTPError, Session
 class ApiBase:
     DEFAULT_STATUS_CODE = (200, 201, 202, 204)
 
-    # TODO: Need add session(learn requests documentation)
     def handle_status(self, response: Response):
         if response.status_code not in self.DEFAULT_STATUS_CODE:
             raise HTTPError(f'{response.status_code} not in {self.DEFAULT_STATUS_CODE}')
@@ -26,11 +25,11 @@ class ApiBase:
     def post(self, url, data, **kwargs):
         return self.request('POST', url, data=data, **kwargs)
 
-    def patch(self, url, params, **kwargs):
-        return self.request('PATCH', url, params=params, **kwargs)
+    def patch(self, url, data, **kwargs):
+        return self.request('PATCH', url, data=data, **kwargs)
 
-    def put(self, url, params, **kwargs):
-        return self.request('PUT', url, params=params, **kwargs)
+    def put(self, url, data, **kwargs):
+        return self.request('PUT', url, data=data, **kwargs)
 
     def delete(self, url, **kwargs):
         return self.request('DELETE', url, **kwargs)

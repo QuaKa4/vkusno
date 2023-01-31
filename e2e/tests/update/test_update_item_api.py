@@ -15,6 +15,7 @@ def test_update_items():
 
 
 def test_update_item():
+    id = 3
     name = fake.name()
     job = fake.job()
     response = UpdateApi().update_put_item(id, name, job)
